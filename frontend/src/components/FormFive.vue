@@ -5,18 +5,26 @@
       <div class="contact-content">
         <h2>Оцените условия труда <br /> в вашей компании</h2>
         <p>Оставьте заявку и мы свяжемся с вами</p>
+        
         <div class="contact-info">
-          <div class="contact-item" v-for="(field, key) in ['name', 'phone', 'email']" :key="key">
+          <!-- Поля формы -->
+          <div 
+            class="contact-item" 
+            v-for="field in ['name', 'phone', 'email']" 
+            :key="field"
+          >
             <input
-              :type="key === 'phone' ? 'tel' : key"
-              :placeholder="key === 'name' ? 'Имя' : key === 'phone' ? '+7 (777) 777-77-77' : 'Почта'"
-              v-model="form[key]"
-              :class="{ 'error': errors[key] }"
-              @focus="onFocus(key)"
-              @blur="onBlur(key)"
+              :type="field === 'phone' ? 'tel' : field"
+              :placeholder="getPlaceholder(field)"
+              v-model="form[field]"
+              :class="{ 'error': errors[field] }"
+              @focus="onFocus(field)"
+              
             />
-            <span v-if="errors[key]" class="error-message">{{ errors[key] }}</span>
+            <span v-if="errors[field]" class="error-message">{{ errors[field] }}</span>
           </div>
+
+          <!-- Кнопка -->
           <button 
             class="contact-button" 
             @click="submitForm" 
@@ -39,15 +47,26 @@ export default {
   name: 'FormFive',
   data() {
     return {
-      form: { name: '', phone: '', email: '' },
-      errors: { name: '', phone: '', email: '' },
+      form: { 
+        name: '', 
+        phone: '', 
+        email: '' 
+      },
+      errors: { 
+        name: '', 
+        phone: '', 
+        email: '' 
+      },
       isSubmitting: false,
-      buttonHover: false
+      buttonHover: false,
+      focusedField: null // Добавил на всякий случай
     };
   },
+
   mounted() {
     this.setupScrollAnimation();
   },
+
   methods: {
     setupScrollAnimation() {
       const observer = new IntersectionObserver((entries) => {
@@ -64,33 +83,65 @@ export default {
 
       this.$nextTick(() => observer.observe(this.$el));
     },
-    onFocus(field) { this.focusedField = field; },
-    onBlur() { this.focusedField = null; },
+
+    getPlaceholder(field) {
+      if (field === 'name') return 'Имя';
+      if (field === 'phone') return '+7 (777) 777-77-77';
+      if (field === 'email') return 'Почта';
+      return '';
+    },
+
+    onFocus(field) {
+      this.focusedField = field;
+    },
+
+    onBlur() {
+      this.focusedField = null;
+    },
+
     sanitizeInput(input) {
       const div = document.createElement('div');
       div.textContent = input;
       return div.innerHTML;
     },
+
     validateForm() {
       this.errors = { name: '', phone: '', email: '' };
       let isValid = true;
 
       const nameRegex = /^[a-zA-Zа-яА-Я\s-]{2,50}$/;
-      if (!this.form.name.trim()) this.errors.name = 'Введите имя', isValid = false;
-      else if (!nameRegex.test(this.form.name.trim())) this.errors.name = 'Имя: 2–50 букв', isValid = false;
+      if (!this.form.name.trim()) {
+        this.errors.name = 'Введите имя';
+        isValid = false;
+      } else if (!nameRegex.test(this.form.name.trim())) {
+        this.errors.name = 'Имя: 2–50 букв';
+        isValid = false;
+      }
 
       const phoneRegex = /^\+?\d{10,15}$/;
-      if (!this.form.phone.trim()) this.errors.phone = 'Введите телефон', isValid = false;
-      else if (!phoneRegex.test(this.form.phone.replace(/\D/g, ''))) this.errors.phone = 'Некорректный номер', isValid = false;
+      if (!this.form.phone.trim()) {
+        this.errors.phone = 'Введите телефон';
+        isValid = false;
+      } else if (!phoneRegex.test(this.form.phone.replace(/\D/g, ''))) {
+        this.errors.phone = 'Некорректный номер';
+        isValid = false;
+      }
 
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!this.form.email.trim()) this.errors.email = 'Введите email', isValid = false;
-      else if (!emailRegex.test(this.form.email)) this.errors.email = 'Некорректный email', isValid = false;
+      if (!this.form.email.trim()) {
+        this.errors.email = 'Введите email';
+        isValid = false;
+      } else if (!emailRegex.test(this.form.email)) {
+        this.errors.email = 'Некорректный email';
+        isValid = false;
+      }
 
       return isValid;
     },
+
     async submitForm() {
       if (!this.validateForm()) return;
+
       this.isSubmitting = true;
 
       const sanitizedForm = {
@@ -107,8 +158,10 @@ export default {
         });
 
         if (!response.ok) throw new Error('Ошибка отправки');
+        
         alert('Заявка отправлена!');
         this.form = { name: '', phone: '', email: '' };
+        this.errors = { name: '', phone: '', email: '' };
       } catch (error) {
         alert('Ошибка: ' + error.message);
       } finally {

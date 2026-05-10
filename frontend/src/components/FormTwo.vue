@@ -1,71 +1,84 @@
 <template>
-  <section class="form2">
-    <div class="collage">
-      <img src="/images/Rectangle 95.png" alt="Safety helmet" />
-      <img src="/images/Rectangle 96.png" alt="Safety gloves" />
-    </div>
-    <div class="ride">
-      <div class="ride-text">
-        <h2>ИП "Белкин" - это надежный партнер в оценке условий труда</h2>
-        <p>
-          Мы предоставляем услуги по проведению специальной оценки условий труда и
-          оформлению документов по охране труда для вашего предприятия
-        </p>
-        <button class="detalis-button">Узнать больше</button>
+  <div class="form-two">   <!-- ← Добавили обёртку -->
+    <section class="form2">
+      <div class="collage">
+        <img src="/images/Rectangle 95.png" alt="Safety helmet" />
+        <img src="/images/Rectangle 96.png" alt="Safety gloves" />
       </div>
-    </div>
-  </section>
+      <div class="ride">
+        <div class="ride-text">
+          <h2>ИП "Белкин" - это надежный партнер в оценке условий труда</h2>
+          <p>
+            Мы предоставляем услуги по проведению специальной оценки условий труда и
+            оформлению документов по охране труда для вашего предприятия
+          </p>
+          <button class="detalis-button" @click="goToServices">
+            Узнать больше
+          </button>
+        </div>
+      </div>
+    </section>
 
-  <section class="form3">
-    <h2>Преимущества сотрудничества с ИП "Белкин"</h2>
-    <div class="benefits">
-      <div class="benefit-item">
-        <div class="benefit-icon-background">
-          <img src="/images/fire-icon.png" alt="Fire icon" class="benefit-icon" />
+    <section class="form3">
+      <h2>Преимущества сотрудничества с ИП "Белкин"</h2>
+      <div class="benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon-background">
+            <img src="/images/fire-icon.png" alt="Fire icon" class="benefit-icon" />
+          </div>
+          <h3>Опыт и <br/> надежность</h3>
+          <p>Компании обладает многолетним опытом в сфере охраны труда, что делает нас надежным партнером.</p>
         </div>
-        <h3>Опыт и <br/> надежность</h3>
-        <p>Компании обладает многолетним опытом в сфере охраны труда, что делает нас надежным партнером.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon-background">
-          <img src="/images/thumbs-up-icon.png" alt="Thumbs up icon" class="benefit-icon" />
+        <div class="benefit-item">
+          <div class="benefit-icon-background">
+            <img src="/images/thumbs-up-icon.png" alt="Thumbs up icon" class="benefit-icon" />
+          </div>
+          <h3>Индивидуальный подход</h3>
+          <p>Каждому клиенту мы предлагаем решение, разработанное под его задачи и потребности.</p>
         </div>
-        <h3>Индивидуальный подход</h3>
-        <p>Каждому клиенту мы предлагаем решение, разработанное под его задачи и потребности.</p>
-      </div>
-      <div class="benefit-item">
-        <div class="benefit-icon-background">
-          <img src="/images/bolt-icon.png" alt="Bolt icon" class="benefit-icon" />
+        <div class="benefit-item">
+          <div class="benefit-icon-background">
+            <img src="/images/bolt-icon.png" alt="Bolt icon" class="benefit-icon" />
+          </div>
+          <h3>Профессиональный коллектив</h3>
+          <p>Наши специалисты постоянно повышают свои квалификации, чтобы предоставлять качественные услуги.</p>
         </div>
-        <h3>Профессиональный коллектив</h3>
-        <p>Наши специалисты постоянно повышают свои квалификации, чтобы предоставлять качественные услуги.</p>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'FormTwo',
+
   mounted() {
     this.setupScrollAnimations();
   },
+
   methods: {
+    goToServices() {
+      this.$router.push('/services');
+    },
+
     setupScrollAnimations() {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               this.animateElements();
-              observer.unobserve(entry.target); // Анимируем один раз
+              observer.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.3 } // Срабатывает, когда 30% секции видно
+        { threshold: 0.3 }
       );
 
+      // Исправленная часть
       this.$nextTick(() => {
-        observer.observe(this.$el);
+        if (this.$el) {
+          observer.observe(this.$el);
+        }
       });
     },
 
@@ -79,7 +92,6 @@ export default {
         el.style.transform = 'translateY(20px)';
         el.style.transition = `opacity 0.6s ease ${index * 0.15}s, transform 0.6s ease ${index * 0.15}s`;
 
-        // Запускаем анимацию
         setTimeout(() => {
           el.style.opacity = '1';
           el.style.transform = 'translateY(0)';
