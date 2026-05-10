@@ -93,7 +93,7 @@
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 75%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -107,7 +107,7 @@
   color: white;
   padding: 20px;
   border-radius: 10px;
-  font-size: 32px;
+  font-size: clamp(2rem, 3.5vw, 3rem);
   margin-bottom: 30px;
 }
 
@@ -117,11 +117,12 @@
   color: black;
   line-height: 1.6;
   margin-bottom: 20px;
+	font-size: clamp(1rem, 1.5vw, 1.2rem);;
 }
 
 .ot__alert {
     font-family: 'Nekst-SemiBold', sans-serif;
-    font-size: 20px;
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
   background: #e9e9ef;
   padding: 20px;
   border-radius: 12px;
@@ -136,7 +137,8 @@
   margin-top: 30px;
   display: flex;
   gap: 40px;
-  align-items: flex-start;
+  justify-content: space-between;
+    align-items: center;
 }
 
 .ot__features-title {
@@ -145,8 +147,9 @@
   background: #e9e9ef;
   padding: 20px;
   border-radius: 12px;
-  max-width: 300px;
+  
   font-weight: 600;
+	font-size: clamp(1.2rem, 2vw, 1.6rem);
 }
 
 .ot__features ul {
@@ -160,6 +163,7 @@
   margin-bottom: 10px;
   padding-left: 20px;
   position: relative;
+	font-size: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 .ot__features li::before {
@@ -175,12 +179,13 @@
 .ot__plan h2 {
   margin: 50px auto 30px;
   text-align: center;
+	margin-top: 100px;
   background: linear-gradient(90deg, #5f5ce6, #6c63ff);
   color: white;
   padding: 20px 30px;
   border-radius: 40px;
-  font-size: 32px;
-  max-width: 900px;
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  max-width: 90%;
   font-family: 'Nekst-Bold', sans-serif;
 }
 
@@ -258,15 +263,15 @@
 /* TIMELINE 2 */
 .timeline2 {
   position: relative;
-  margin-top: 60px;
+  margin-top: 200px;
   padding-bottom: 40px;
 }
 
 /* ЛИНИЯ */
 .timeline2__path {
   position: absolute;
-  left: 5%;
-  right: 5%;
+  left: 15%;
+  right: 15%;
   top: 48px; /* Сдвинуто на 2px, чтобы центр линии 2px был ровно на отметке 50px */
   height: 120px;
   border-top: 2px solid black;
@@ -280,17 +285,17 @@
 .timeline2__row {
   display: flex;
   justify-content: space-between;
-  padding: 0 5%;
+  padding: 0 15%;
   position: relative;
   z-index: 2; /* Строки поверх линии */
 }
 
 .timeline2__row.top {
-  margin-bottom: 80px;
+  margin-bottom: 0px;
 }
 
 .timeline2__row.bottom {
-  margin-top: 0;
+  margin-top: 90px;
 }
 
 /* ЭЛЕМЕНТ */
@@ -301,7 +306,7 @@
 }
 
 .item p { 
-  font-size: 13px;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
   color: black;
   margin: 0 0 10px;
   font-family: 'Nekst-Regular', sans-serif;
@@ -332,7 +337,7 @@
 
 .bottom .dot {
   margin-bottom: 0;
-  top: -15px; /* Смещает центр кружка на нижнюю линию */
+  top: 00px; /* Смещает центр кружка на нижнюю линию */
 }
 
 /* УБЕРИТЕ старые правила: .top .dot { margin-top: 0; top: -6px; } */
@@ -355,8 +360,112 @@
   margin: 0;
 }
 .timeline2__row.top .item p {
-  margin-top: -40px;    /* Отрицательный отступ поднимает текст. Регулируйте значение (-10px, -20px и т.д.) */
+  margin-top: -140px;    /* Отрицательный отступ поднимает текст. Регулируйте значение (-10px, -20px и т.д.) */
   margin-bottom: 65px;  /* Фиксирует расстояние до точки, чтобы текст не наезжал на неё */
+}
+
+.timeline2__row.bottom .item p{
+	margin-top: 10px;
+}
+
+
+/* ====================== АНИМАЦИИ ====================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Применение анимаций */
+
+.ot__header h1 {
+  animation: scaleIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.ot__header p {
+  animation: fadeInUp 0.8s ease forwards 0.2s;
+}
+
+.ot__alert {
+  animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.4s;
+}
+
+.ot__features-title {
+  animation: fadeInUp 0.8s ease forwards 0.6s;
+}
+
+/* Пункты списка */
+.ot__features li {
+  animation: fadeInUp 0.7s ease forwards;
+}
+.ot__features li:nth-child(1) { animation-delay: 0.8s; }
+.ot__features li:nth-child(2) { animation-delay: 1s; }
+.ot__features li:nth-child(3) { animation-delay: 1.2s; }
+
+/* Заголовок плана */
+.ot__plan h2 {
+  animation: scaleIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.3s;
+}
+
+/* Таймлайн */
+.timeline2__row .item {
+  animation: fadeInUp 0.9s ease forwards;
+  opacity: 0;
+}
+
+/* Задержки для таймлайна */
+.timeline2__row.top .item:nth-child(1) { animation-delay: 0.5s; }
+.timeline2__row.top .item:nth-child(2) { animation-delay: 0.8s; }
+.timeline2__row.top .item:nth-child(3) { animation-delay: 1.1s; }
+
+.timeline2__row.bottom .item:nth-child(1) { animation-delay: 1.5s; }
+.timeline2__row.bottom .item:nth-child(2) { animation-delay: 1.8s; }
+.timeline2__row.bottom .item:nth-child(3) { animation-delay: 2.1s; }
+
+/* Точки */
+.dot {
+  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Дополнительно — плавное появление всей секции */
+.ot {
+  animation: fadeIn 1.2s ease forwards;
 }
 
 </style>

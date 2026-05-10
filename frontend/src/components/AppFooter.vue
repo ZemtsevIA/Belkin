@@ -11,8 +11,8 @@
         <a href="/contact"  class="footer-link">Связаться с нами</a>
       </div>
       <div class="footer-contact">
-        <p>+7 (777) 777-77-77</p>
-        <p>abcde@email.ru</p>
+        <p>+7 (961) 095-50-07</p>
+        <p>trud70@email.ru</p>
       </div>
       <div class="footer-contacts">
         

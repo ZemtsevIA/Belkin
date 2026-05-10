@@ -225,4 +225,36 @@ export default {
     }
   }
 }
+
+
+.angle {
+  position: absolute;
+
+  /* Вместо top */
+  bottom: 3vh;
+
+  left: 50%;
+  width: 7%;
+  max-width: 60px;
+  min-width: 30px;
+
+  transform: translateX(-50%) rotate(90deg);
+
+  z-index: 5;
+
+  animation: float 2.8s ease-in-out infinite;
+  transition: filter 0.3s ease, transform 0.2s ease;
+}
+
+/* Анимация */
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0px) rotate(90deg);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-12px) rotate(90deg);
+  }
+
+}
 </style>

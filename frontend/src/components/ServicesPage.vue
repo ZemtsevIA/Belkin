@@ -345,7 +345,7 @@ export default {
 .left-dop,
 .right-dop,
 .center-dop {
-  background: #f5f5f7;
+  
   border-radius: 20px;
   padding: 25px 30px;
   box-sizing: border-box;
@@ -617,7 +617,7 @@ export default {
 /* Общие стили карточек */
 .left-dop,
 .right-dop {
-  background: #f5f5f7;
+  
   border-radius: 20px;
   padding: 25px 30px;
   box-sizing: border-box;
@@ -686,7 +686,7 @@ export default {
 
 /* Центральный блок */
 .center-dop {
-  background: #f5f5f7;
+  
   border-radius: 20px;
   padding: 25px 30px;
   box-sizing: border-box;
