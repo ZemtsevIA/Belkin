@@ -7,30 +7,15 @@
       <div class="footer-links">
         <a href="#" class="footer-link">О компании</a>
         <a href="#" class="footer-link">Преимущества</a>
-        <a href="#" class="footer-link">Отзывы</a>
+        <a href="/reviews" class="footer-link">Отзывы</a>
         <a href="/contact"  class="footer-link">Связаться с нами</a>
       </div>
       <div class="footer-contact">
         <p>+7 (961) 095-50-07</p>
+				<p>+7 (3822) 97-99-06</p>
         <p>trud70@email.ru</p>
       </div>
-      <div class="footer-contacts">
-        
-        <div class="social-icons">
-          <a href="#" class="social-icon">
-            <img src="/images/telegram.png" alt="Telegram" />
-          </a>
-          <a href="#" class="social-icon">
-            <img src="/images/whatsapp.png" alt="WhatsApp" />
-          </a>
-          <a href="#" class="social-icon">
-            <img src="/images/twitter.png" alt="Twitter" />
-          </a>
-          <a href="#" class="social-icon">
-            <img src="/images/vk-logo.png" alt="VK" />
-          </a>
-        </div>
-      </div>
+      
     </div>
   </footer>
 </template>
@@ -49,6 +34,7 @@ export default {
   padding-bottom: 3rem;
   font-family: 'Nekst', sans-serif;
   border-top: 1px solid #e0e0e0;
+	margin-top: 0;
 }
 
 .footer-content {
