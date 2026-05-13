@@ -2,7 +2,7 @@
   <div class="form-two">   <!-- ← Добавили обёртку -->
     <section class="form2">
       <div class="collage">
-        <img src="/images/Rectangle 95.png" alt="Safety helmet" />
+        <img src="/images/Rectangle 95.jpg" alt="Safety helmet" />
         <img src="/images/Rectangle 96.png" alt="Safety gloves" />
       </div>
       <div class="ride">
@@ -133,7 +133,7 @@ export default {
 .collage img {
   width: clamp(200px, 25vw, 750px); /* Пропорциональное масштабирование с ограничениями */
   height: clamp(200px, 25vw, 750px);
-  border-radius: 15px;
+  border-radius: 6vh;
   object-fit: cover;
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

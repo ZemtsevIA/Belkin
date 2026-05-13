@@ -5,7 +5,7 @@
       <div class="banner-content" ref="content">
         <h2>СПЕЦИАЛЬНАЯ ОЦЕНКА <br/> УСЛОВИЙ ТРУДА</h2>
         <p>Профессиональное оформление документов</p>
-        <button class="banner-button">Связаться с нами</button>
+        <button class="banner-button" @click="goToContact">Связаться с нами</button>
       </div>
     </div>
   </section>
@@ -18,6 +18,12 @@ export default {
     this.setupScrollAnimation();
   },
   methods: {
+
+		goToContact() {
+      this.$router.push('/contact');
+    },
+
+
     setupScrollAnimation() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

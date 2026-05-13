@@ -5,10 +5,10 @@
         <h3>ИП "Белкин"</h3>
       </div>
       <div class="footer-links">
-        <a href="#" class="footer-link">О компании</a>
-        <a href="#" class="footer-link">Преимущества</a>
+        <a href="/" class="footer-link">О компании</a>
+        <a href="/" class="footer-link">Преимущества</a>
         <a href="/reviews" class="footer-link">Отзывы</a>
-        <a href="/contact"  class="footer-link">Связаться с нами</a>
+        <a href="/contact" class="footer-link">Связаться с нами</a>
       </div>
       <div class="footer-contact">
         <p>+7 (961) 095-50-07</p>
