@@ -62,25 +62,26 @@ export default {
     },
 
     setupScrollAnimations() {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              this.animateElements();
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('visible');
+							this.animateElements();
+							observer.unobserve(entry.target);
+						}	
+					});
+				},
+				{ threshold: 0.3 }
+			);
 
-      // Исправленная часть
-      this.$nextTick(() => {
-        if (this.$el) {
-          observer.observe(this.$el);
-        }
-      });
-    },
+			this.$nextTick(() => {
+			const form2Element = this.$el?.querySelector('.form2');
+			if (form2Element) {
+				observer.observe(form2Element);  // ← наблюдаем за .form2, а не за .form-two
+			}
+		});
+	},
 
     animateElements() {
       const elements = document.querySelectorAll(

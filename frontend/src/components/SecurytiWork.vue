@@ -468,4 +468,107 @@
   animation: fadeIn 1.2s ease forwards;
 }
 
+
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .timeline2__row {
+    gap: 15px;
+  }
+
+  .timeline2__row .item {
+    padding: 20px 14px;
+    min-height: 190px;
+  }
+
+  .timeline2__row .item p {
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .ot {
+    padding: 25px 0;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  .ot__header h1 {
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .ot__header p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .ot__alert {
+    padding: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .ot__features {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .ot__features-title {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .ot__features ul {
+    padding-top: 0;
+  }
+
+  .ot__features li {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .ot__plan h2 {
+    margin-top: 60px;
+    padding: 18px;
+    border-radius: 24px;
+    font-size: 24px;
+    line-height: 1.3;
+	}
+}
+
+@media (max-width: 480px) {
+  .ot__header h1 {
+    font-size: 24px;
+  }
+
+  .ot__plan h2 {
+    font-size: 20px;
+  }
+
+  .timeline2__row .item {
+    padding: 16px 16px 16px 52px;
+  }
+
+  .timeline2__row .item p {
+    font-size: 14px;
+  }
+
+  .dot {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
 </style>

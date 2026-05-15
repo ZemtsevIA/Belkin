@@ -20,7 +20,7 @@
         <router-link to="/services" class="nav-link">Услуги</router-link>
         
         <router-link to="/reviews" class="nav-link">Отзывы</router-link>
-        <router-link to="/contacts" class="nav-link">Контакты</router-link>
+        <router-link to="/contact" class="nav-link">Контакты</router-link>
       </nav>
     </transition>
 
